@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 app.use(routes)
 
 app.get('/', (req, res) => {
-  res.status(200).json({ MSG: 'Bem vindo!' })
+  res.status(200).json({ MSG: 'Bem vindoS!' })
 })
 
 app.listen(port, () => {
