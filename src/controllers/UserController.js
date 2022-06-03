@@ -75,7 +75,7 @@ module.exports = {
     const userPassword = await User.findOne({ password })
 
     if (!userPassword) {
-      return res.status(422).json({ error: 'Senha incorreta' })
+      return res.status(422).json({ error: 'Senha incorreta!' })
     }
 
     try {
