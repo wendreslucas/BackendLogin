@@ -66,12 +66,6 @@ module.exports = {
       return res.status(404).json({ error: 'Usuário não encontrado' })
     }
 
-    // const checkPassword = bcrypt.compareSync(password, user.password)
-    // if (!checkPassword) {
-    //   return res.status(401).json({ error: 'Senha incorreta' })
-    // }
-    // return res.status(200).json({ MSG: 'Deu certo!' })
-
     const userPassword = await User.findOne({ password })
 
     if (!userPassword) {
@@ -82,7 +76,9 @@ module.exports = {
       const secret = process.env.SECRET
 
       const token = jwt.sign({ id: user._id }, secret)
-      return res.status(200).json({ MSG: 'Autenticado com sucesso', token })
+      return res
+        .status(200)
+        .json({ MSG: 'Autenticado com sucesso', token, user })
     } catch (error) {
       console.log(error)
       return res.status(500).json({ error: error.message })
